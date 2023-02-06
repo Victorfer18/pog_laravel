@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProdutoController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,17 +15,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return "tafarel";
 });
 
-Route::get('/empresa', function(){
-    return view('site/empresa');
-});
+Route::resource('produtos', ProdutoController::class);
 
-Route::get('/produto/{id}', function($id){
-    $json = json_encode([
-        "next" => true,
-        "payload" => $id,
-     ]);
- return $json;
-});
