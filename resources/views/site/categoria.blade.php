@@ -4,7 +4,8 @@
 {{-- Coments --}}
 
 <div class="row container">
-@foreach ($produtos as $i)
+    <h3>Categoria: {{$categoria->name}}</h3>
+@foreach ($produto as $i)
     <div class="col s12 m4">
         <div class="card">
             <div class="card-image">
@@ -21,7 +22,7 @@
 
 </div>
 <div class="row">
-    {{$produtos->links()}}
+
 </div>
 
 @endsection

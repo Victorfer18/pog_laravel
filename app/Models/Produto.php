@@ -9,4 +9,11 @@ class Produto extends Model
 {
     use HasFactory;
     protected $table = 'produtos';
+
+    public function user(){
+        return $this->belongsTo(User::class, 'id_user');
+    }
+    public function category(){
+        return $this->belongsTo(Categoria::class, 'id_categoria');
+    }
 }
