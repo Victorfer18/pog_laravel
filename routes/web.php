@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CarrinhoController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProdutoController;
 use App\Http\Controllers\SiteController;
@@ -21,3 +22,7 @@ Route::get('/', [SiteController::class, 'index'])->name('site.index');
 
 Route::get('/produto/{slug}', [SiteController::class, 'details'])->name('site.details');
 Route::get('/categoria/{id}', [SiteController::class, 'categoria'])->name('site.categoria');
+
+
+Route::get('/carrinho', [CarrinhoController::class, 'cart_list'])->name('site.carrinho');
+Route::post('/carrinho', [CarrinhoController::class, 'add_itens_cart'])->name('site.addcarrinho');
