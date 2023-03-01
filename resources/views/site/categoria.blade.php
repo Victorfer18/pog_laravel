@@ -1,5 +1,5 @@
 @extends('site.layout')
-@section('tittle', 'Home')
+@section('tittle', 'Categoria')
 @section('conteudo')
 {{-- Coments --}}
 

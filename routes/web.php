@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CarrinhoController;
+use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProdutoController;
 use App\Http\Controllers\SiteController;
@@ -26,3 +27,8 @@ Route::get('/categoria/{id}', [SiteController::class, 'categoria'])->name('site.
 
 Route::get('/carrinho', [CarrinhoController::class, 'cart_list'])->name('site.carrinho');
 Route::post('/carrinho', [CarrinhoController::class, 'add_itens_cart'])->name('site.addcarrinho');
+Route::post('/remover', [CarrinhoController::class, 'removeCart'])->name('site.removecarrinho');
+Route::post('/atualizar', [CarrinhoController::class, 'refreshCart'])->name('site.atualizacarrinho');
+Route::get('/clear', [CarrinhoController::class, 'clearCart'])->name('site.clearcarrinho');
+Route::view('/login', 'login.form')->name('login.form');
+Route::post('/auth', [LoginController::class, 'auth'])->name('login.auth');
