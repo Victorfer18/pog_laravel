@@ -23,8 +23,15 @@ class LoginController extends Controller
         if (!Auth::attempt($credentials)) {
             return redirect()->back()->with('erro', 'Email ou senha inválida!');
         }
-
         $request->session()->regenerate();
-        redirect()->intended('dashboard');
+        return redirect()->intended('/admin/dashboard');
+    }
+
+    public function logout(Request $request)
+    {
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect(route('site.index'));
     }
 }

@@ -1,21 +1,11 @@
 <?php
 
 use App\Http\Controllers\CarrinhoController;
-use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProdutoController;
 use App\Http\Controllers\SiteController;
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\DashboardController;
 
 Route::resource('produtos', ProdutoController::class);
 
@@ -32,3 +22,5 @@ Route::post('/atualizar', [CarrinhoController::class, 'refreshCart'])->name('sit
 Route::get('/clear', [CarrinhoController::class, 'clearCart'])->name('site.clearcarrinho');
 Route::view('/login', 'login.form')->name('login.form');
 Route::post('/auth', [LoginController::class, 'auth'])->name('login.auth');
+Route::get('/logout', [LoginController::class, 'logout'])->name('login.logout');
+Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard')->middleware(['checkemail']);
