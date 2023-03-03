@@ -1,4 +1,3 @@
-@section('tittle', 'Login')
 @if ($mesagem = Session::get('erro'))
     {{$mesagem}}
 @endif
