@@ -20,7 +20,7 @@ class LoginController extends Controller
         ]
     );
 
-        if (!Auth::attempt($credentials)) {
+        if (!Auth::attempt($credentials, $request->remember)) {
             return redirect()->back()->with('erro', 'Email ou senha inválida!');
         }
         $request->session()->regenerate();
