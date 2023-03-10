@@ -29,8 +29,12 @@
                     border-radius: 7px;
                     border: none;
                     outline: none;
-                "><br>
-                <div>
+                ">
+                <br>
+                <div style="font-size: 20px; margin-top: 10px">
+                    <input type="checkbox" name="remember" id=""> Lembrar-me
+                </div>
+                <div style="display: grid;">
                     <button type="submit" style="
                     height: 50px;
                     width: 100%;
@@ -41,6 +45,9 @@
                     color: #fff;
                     margin-top: 25px;
                 "> Entrar </button>
+                <br>
+                <div style="display: flex; justify-content: center">
+                    <a href="{{route('login.create')}}"> Cadastre-se </a>
                 </div>
                 </form>
            </div>
