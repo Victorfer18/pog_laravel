@@ -90,7 +90,6 @@
 
     </div>
 
-
     @endsection
     @push('graficos')
 <script>
@@ -99,10 +98,10 @@
     var myChart = new Chart(ctx, {
         type: 'line',
         data: {
-            labels: ['Janeiro', 'Feveiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+            labels: [{{$userAno}}],
             datasets: [{
-                label: []'2022'],
-                data: [12, 1, 3, 5, 12, 1, 12, 1, 12, 1,],
+                label: [{!! $userLabel !!}],
+                data: [{{$userTotal}}],
                 backgroundColor: [
                     'rgba(255, 99, 132, 1)',
                     'rgba(54, 162, 235, 1)',
@@ -134,10 +133,10 @@
     var myChart = new Chart(ctx, {
         type: 'pie',
         data: {
-            labels: ['Facebook', 'Google', 'Instagram'],
+            labels: [{!! $catLabel !!}],
             datasets: [{
                 label: 'Visitas',
-                data: [12, 39, 3],
+                data: [{{$catTotal}}],
                 backgroundColor: [
                     'rgba(255, 99, 132)',
                     'rgba(54, 162, 235)',
