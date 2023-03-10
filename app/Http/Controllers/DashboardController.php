@@ -14,7 +14,7 @@ class DashboardController extends Controller
         $usuarios = User::all();
 
         $usersData = User::select([
-            DB::raw('YEAR(created_at as ano)'),
+            DB::raw('YEAR(created_at) as ano'),
             DB::raw('COUNT(*) as total'),
         ])->groupBy('ano')->orderBy('ano', 'asc')->get();
 
