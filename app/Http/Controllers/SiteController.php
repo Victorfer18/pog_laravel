@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Categoria;
 use App\Models\Produto;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class SiteController extends Controller
 {
@@ -19,13 +20,15 @@ class SiteController extends Controller
     public function details(string $slug)
     {
         $produto = Produto::where('slug', $slug)->first();
-
+        // Gate::authorize('ver-produto', $produto);
+        // $this->authorize('ver-produto', $produto);
+        if (Gate::allows('ver-produto', $produto)) {
+            return view('site.details', compact('produto'));
+        }
+        if (Gate::denies('ver-produto', $produto)) {
+            return redirect()->route('site.index');
+        }
         return view('site.details', compact('produto'));
-        // return json_encode([
-        //     'next' => true,
-        //     'message' => 'Product Details',
-        //     'payload' => $produtos
-        // ]);
     }
 
     public function categoria(int $id)
@@ -34,10 +37,5 @@ class SiteController extends Controller
         $produto = Produto::where('id_categoria', $id)->get();
 
         return view('site.categoria', compact('produto', 'categoria'));
-        // return json_encode([
-        //     'next' => true,
-        //     'message' => 'Product Details',
-        //     'payload' => $produtos
-        // ]);
     }
 }

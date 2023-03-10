@@ -9,7 +9,12 @@
         <div class="card">
             <div class="card-image">
               <img src="{{$i->imagem}}" loading="lazy">
-              <a href="{{route('site.details', $i->slug)}}" class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">visibility</i></a>
+              @can('ver-produto', $i)
+                <a href="{{route('site.details', $i->slug)}}" class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">visibility</i></a>
+              @endcan
+              {{-- @cannot('ver-produto', $i)
+
+              @endcannot --}}
             </div>
             <span class="card-title" style="color: black">{{$i->name}}</span>
             <div class="card-content">
