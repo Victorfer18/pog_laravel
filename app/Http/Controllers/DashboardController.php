@@ -17,7 +17,15 @@ class DashboardController extends Controller
             DB::raw('YEAR(created_at) as ano'),
             DB::raw('COUNT(*) as total'),
         ])->groupBy('ano')->orderBy('ano', 'asc')->get();
+        foreach($usersData as $index){
+            $ano[] = $index->ano;
+            $total[] = $index->total;
+        }
 
+        $userLaber = "'Comparativo de cadastros de usuários'";
+
+        $userAno = implode(',' , $ano);
+        $userTotal = implode(',', $total);
         dd($usersData);
 
         return view('admin.dashboard', compact('usuarios'));
