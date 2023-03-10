@@ -37,6 +37,7 @@ class DashboardController extends Controller
         $userAno = implode(',' , $ano);
         $userTotal = implode(',', $total);
 
-        return view('admin.dashboard', compact('usuarios', 'userAno', 'userTotal', 'userLabel', 'catLabel', 'catTotal'));
+        $quantidadeRows = $categorias->count();
+        return view('admin.dashboard', compact('usuarios', 'userAno', 'userTotal', 'userLabel', 'catLabel', 'catTotal', 'quantidadeRows'));
     }
 }

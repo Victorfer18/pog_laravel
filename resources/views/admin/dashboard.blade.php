@@ -127,8 +127,13 @@
                     }
         }
     });
-
     /* Gráfico 02 */
+    var quantityTotal = {{$quantidadeRows}}
+    var lista = []
+    for (let index = 0; index < quantityTotal; index++) {
+        lista.push('rgba('+Math.floor(Math.random() * 240)+', '+Math.floor(Math.random() * 240)+', '+Math.floor(Math.random() * 240)+')')
+    };
+    console.log(...lista);
     var ctx = document.getElementById('myChart2');
     var myChart = new Chart(ctx, {
         type: 'pie',
@@ -138,9 +143,7 @@
                 label: 'Visitas',
                 data: [{{$catTotal}}],
                 backgroundColor: [
-                    'rgba(255, 99, 132)',
-                    'rgba(54, 162, 235)',
-                    'rgba(255, 159, 64)'
+                        ...lista
                     ]
                 }]
             }
