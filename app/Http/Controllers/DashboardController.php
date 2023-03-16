@@ -14,7 +14,7 @@ class DashboardController extends Controller
     public function index()
     {
         $usuarios = User::all();
-        $categorias = Categoria::all();
+        $categorias = Categoria::with('produtos')->get();
         $usersData = User::select([
             DB::raw('YEAR(created_at) as ano'),
             DB::raw('COUNT(*) as total'),
@@ -22,11 +22,12 @@ class DashboardController extends Controller
         foreach($usersData as $index){
             $ano[] = $index->ano;
             $total[] = $index->total;
+
         }
 
         foreach($categorias as $index){
             $catNome[] = "'".$index->name."'";
-            $catTotal[] = Produto::where('id_categoria', $index->id)->count();
+            $catTotal[] =  $index->produtos->count();
         };
 
         $catLabel = implode(',', $catNome);
